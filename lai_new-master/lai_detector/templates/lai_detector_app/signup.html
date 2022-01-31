@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-4 offset-4">
+                    {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">
+                                <strong>{{field.name}}</strong> {{ error|escape }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            <strong>{{ error|escape }}</strong>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                </div>
+                <div class="col-4 offset-4">
+                    <div class="card shadow-lg rounded">
+                        <div class="card-body text-center">
+                            <h2 class="mb-4">Sign up</h2>
+                            <form method="post" action="{% url 'signupview' %}">
+                                {% csrf_token %}
+                                <input type="text" placeholder="Login" class="form-control" name="username">
+                                <input type="password" placeholder="Password" class="form-control mt-2" name="password1">
+                                <input type="password" placeholder="Password confirmation" class="form-control mt-2" name="password2">
+                                <input type="submit" class="btn btn-primary btn-block mt-2" value="Sign up" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+    {% block content %}
+        {% if error %}
+            <h3 class="text-center text-danger">Your username and password didn't match. Please try again.</h3>
+        {% endif %}
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-4 offset-4">
+                    <div class="card shadow-lg rounded">
+                        <div class="card-body text-center">
+                            <h2 class="mb-4">Sign in</h2>
+                            <form method="post" action="{% url 'loginview' %}">
+                                {% csrf_token %}
+                                <input type="text" placeholder="Login" class="form-control" name="login">
+                                <input type="password" placeholder="Password" class="form-control mt-2" name="password">
+                                <input type="submit" class="btn btn-primary btn-block mt-2" value="Sign in" />
+                                <input type="hidden" name="next" value="{{ next }}" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

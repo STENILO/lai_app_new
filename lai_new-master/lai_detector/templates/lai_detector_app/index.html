@@ -1,0 +1,85 @@
+{% extends 'layout.html' %}
+{% block title %} LAI Calculation {% endblock %}
+{% block content %}
+    <style>
+        .uploader {
+            position: relative; 
+            overflow: hidden; 
+            /* width:300px; 
+            height:350px; */
+            background: #f3f3f3; 
+            border: 2px dashed #e8e8e8;
+        }
+
+        /* .filePhotoClass{
+            position:absolute;
+            width:300px;
+            height:400px;
+            top:-50px;
+            left:0;
+            z-index:2;
+            opacity:0;
+            cursor:pointer;
+        } */
+
+        .uploader img{
+            /* position:absolute; */
+            /* width:302px;
+            height:352px; */
+            top:-1px;
+            left:-1px;
+            z-index:1;
+            border:none;
+        }
+
+        .result{
+            /* width:302px;
+            height:352px; */
+            top:-1px;
+            left:-1px;
+            z-index:1;
+            border:none;
+        }
+    </style>
+    <div class="row" id="rowDiv">
+        <div class="col-12 mt-3">
+            <div class="modal"></div>
+            <div class="row" id="prependDiv">
+            </div>
+        </div>
+        <div class="col-12 mt-3">
+            <button type="button" id="loadMoreBtn" class="btn btn-info" offset="0" count="{{ images_count }}">Get uploaded images ({{ images_count }})</button>
+            <button type="button" id="addNewImgBtn" class="btn btn-success">Add new image</button>
+        </div>
+    </div>
+
+    <script>
+        // var imageLoader = document.getElementById('filePhoto');
+        // imageLoader.addEventListener('change', handleImage, false);
+
+        // function handleImage(e) {
+        //     var reader = new FileReader();
+        //     reader.onload = function (event) {
+        //         $('.uploader img').attr('src',event.target.result);
+        //     }
+        //     reader.readAsDataURL(e.target.files[0]);
+        // }
+
+        // // Edit for multiple images
+        // // I didn't try but it should work.
+        // // Also you need write some CSS code to see all images in container properly.
+        // function handleImages(e) {
+        //     $('.uploader img').remove();
+        //     for(var i = 0; i < e.target.files.length; i++){
+        //         var reader = new FileReader();
+        //         reader.onload = function (event) {
+        //             var $img = $('<img/>');
+        //             $img.attr('src', event.target.result);
+        //             $('.uploader').append($img);
+        //         }
+        //         reader.readAsDataURL(e.target.files[i]);
+        //     }
+        // }
+    </script>
+    
+{% endblock %}
